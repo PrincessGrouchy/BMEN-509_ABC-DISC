@@ -5,8 +5,8 @@ name: CI
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
+  #push:
+    #branches: [ main ]
   pull_request:
     branches: [ main ]
     types:
@@ -44,3 +44,8 @@ jobs:
         with:
           branch: BMEN-509_ABC-DISC/Rebecca
           # Delete the `branch` when closing pull requests, and when undeleted after merging. Recommend `true`.
+          base: main
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
